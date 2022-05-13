@@ -41,6 +41,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 """
 
 DATABASES = {
@@ -53,6 +54,7 @@ DATABASES = {
         "PORT": env.str("DATABASE_PORT"),
     }
 }
+
 
 # Content Security Policy
 CSP_DEFAULT_SRC = ("none",)

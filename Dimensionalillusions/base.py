@@ -20,11 +20,11 @@ DEFAULT_APPS = [
 EXPLICT_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
-    "EHub.apps.EhubConfig",
-    "MCourses.apps.McoursesConfig",
-    "MArticles.apps.MarticlesConfig",
-    "MProgrammingLanguage.apps.MprogramminglanguageConfig",
-    "MSoftwareDevelopment.apps.MsoftwaredevelopmentConfig",
+    "Dimensionalillusions.apps.EHub",
+    "Dimensionalillusions.apps.MCourses",
+    "Dimensionalillusions.apps.MArticles",
+    "Dimensionalillusions.apps.MProgrammingLanguage",
+    "Dimensionalillusions.apps.MSoftwareDevelopment",
 ]
 
 THIRDPARTY_PLUGIN = [
@@ -165,10 +165,10 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "EHub.context_processors.forms",
-                "MProgrammingLanguage.context_processors.programminglanguages",
-                "MSoftwareDevelopment.context_processors.frameworks",
-                "MArticles.context_processors.articlefilters",
+                "Dimensionalillusions.apps.EHub.context_processors.forms",
+                "Dimensionalillusions.apps.MProgrammingLanguage.context_processors.programminglanguages",
+                "Dimensionalillusions.apps.MSoftwareDevelopment.context_processors.frameworks",
+                "Dimensionalillusions.apps.MArticles.context_processors.articlefilters",
             ],
         },
     },

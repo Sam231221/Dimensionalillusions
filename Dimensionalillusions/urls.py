@@ -13,11 +13,11 @@ URL in your browser to a module in your Django project.
 urlpatterns = [  # contains list of url() instances.
     url(r"^admin/", admin.site.urls),
     url(r"^ckeditor/", include("ckeditor_uploader.urls")),
-    url(r"^", include("EHub.urls", namespace="Ehub")),
-    url(r"^", include("MCourses.urls", namespace="Courses")),
-    url(r"^", include("MArticles.urls", namespace="MArticles")),
-    url(r"^", include("MProgrammingLanguage.urls")),
-    url(r"^", include("MSoftwareDevelopment.urls")),
+    url(r"^", include("Dimensionalillusions.apps.EHub.urls", namespace="Ehub")),
+    url(r"^", include("Dimensionalillusions.apps.MCourses.urls", namespace="Courses")),
+    url(r"^", include("Dimensionalillusions.apps.MArticles.urls", namespace="MArticles")),
+    url(r"^", include("Dimensionalillusions.apps.MProgrammingLanguage.urls")),
+    url(r"^", include("Dimensionalillusions.apps.MSoftwareDevelopment.urls")),
 ]
 
 from django.conf import settings
@@ -35,8 +35,8 @@ if settings.DEBUG:
 # The server_error() view is overridden by handler500:
 # visit https://docs.djangoproject.com/en/dev/topics/http/views/#customizing-error-views
 
-handler404 = "EHub.views.response404_error_handler"
-handler500 = "EHub.views.response500_error_handler"
+handler404 = "Dimensionalillusions.apps.EHub.views.response404_error_handler"
+handler500 = "Dimensionalillusions.apps.EHub.views.response500_error_handler"
 
 """
 Note: We are just providin the info of where is the custom page to be displayed
