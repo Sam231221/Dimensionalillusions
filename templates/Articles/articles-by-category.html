@@ -1,0 +1,75 @@
+{% extends 'frontendbase.html' %}
+{% load static %}
+{% block title %}
+<title>AcadePra | Articles by Category</title>
+{% endblock %}
+{% block banner %}
+{% endblock %}
+
+{% block main %}
+<main id="main">
+  <section id="blog" class="blog">
+
+    <div class="container-fluid" data-aos="fade-up">
+      <div class="row">
+
+        <div class="col-lg-8 entries">
+
+              {% for i in articles %}
+                    <article class="page">
+                            <div class="img-responsive">
+                              {% if i.thumbnail %}
+                              <img src="{{i.thumbnail}}" alt="article" class="img-fluid">
+                              {% else %}
+                              <img
+                                src="https://res.cloudinary.com/dcgrv6shk/image/upload/v1635600338/mediafiles/profiles/placeholder_v7pmin.png"
+                                alt="" class="img-fluid">
+                              {% endif %}
+                            </div>
+                            <br>
+                            <h2 class="topic-title">{{i.title}}</h2>
+                            {% include 'utilities/article-mini-toolkit.html' %}
+
+                              <div class="page-description">
+                                {{i.description|truncatechars:230|safe}}
+                                <br>
+                                <div class="read-more">
+                                  <a href="{{i.get_absolute_url}}">Read More</a>
+                                </div>
+                              </div>
+                    </article>
+                {% endfor %}
+                <!--Pagination-->
+                <div class="blog-pagination">
+
+                  <ul class="justify-content-center">
+
+                    {% if queryset.has_previous %}
+                    <li class="#">
+                      <a class="#" href="?{{ page_var }}={{ queryset.previous_page_number }}" tabindex="-1"
+                        aria-disabled="true">Previous</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="#"><a class="#" href="?{{ page_var }}={{ queryset.number }}">{{queryset.number}}</a></li>
+
+                    {% if queryset.has_next %}
+                    <li class="#">
+                      <a class="" href="?{{ page_var }}={{ queryset.next_page_number }}">Next</a>
+                    </li>
+                    {% endif %}
+                  </ul>
+
+                </div>
+
+        </div>
+
+        <!--SideBar-->
+        {% include 'utilities/article-filters.html' %}
+
+      </div>
+    </div>
+
+  </section>
+</main>
+{% endblock %}

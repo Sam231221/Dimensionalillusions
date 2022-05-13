@@ -1,0 +1,104 @@
+{% extends 'frontendbase.html' %}
+{% load static %}
+{% block title %}
+<title>{{i.title}}</title>
+{% endblock %}
+
+{% block meta %}
+<link rel="canonical" href="{{request.scheme}}://{{ request.META.HTTP_HOST }}{{i.get_absolute_url}}">
+
+<meta name="author" content="{{i.author}}" />
+
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="{{ request.META.HTTP_HOST }} Articles" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{i.title}}" />
+<meta property="og:author" content="Sam" />
+<meta property="og:url" content="{{request.scheme}}://{{ request.META.HTTP_HOST }}{{i.get_absolute_url}}" />
+
+<meta property="og:image" content="{{i.thumbnail}}">
+<meta property="og:image:secure_url" content="{{i.thumbnail}}">
+<meta property="og:image:width" content="849">
+<meta property="og:image:height" content="400">
+<meta property="og:image:alt" content="{{i.title}}">
+<meta property="og:image:type" content="image/png">
+
+<meta property="article:published_time" content="{{i.published_date}}" />
+<meta property="article:section" content="Articles" />
+<meta property="article:author" content="{{i.author}}" />
+
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
+{% block main %}
+<main id="main ">
+
+  <section id="blog" class="blog">
+    <div class="container-fluid">
+
+      <div class="row">
+        <!--Page Description-->
+        <div class="col-lg-8 pages">
+
+          <article class="page single-page">
+
+            <div class="img-responsive">
+              {% if i.thumbnail %}
+              <img src="{{i.thumbnail}}" alt="article" class="img-fluid">
+              {% else %}
+              <img
+                src="https://res.cloudinary.com/dcgrv6shk/image/upload/v1635600338/mediafiles/profiles/placeholder_v7pmin.png"
+                alt="article" class="img-fluid">
+              {% endif %}
+            </div>
+
+            <br>
+
+            <h1 class="topic-title">{{i.title}}</h1>
+
+            {% include 'utilities/article-minidetail-toolkit.html' %}
+
+            <div class="page-description">
+              <p>{{i.description|safe}}</p>
+            </div>
+
+            <br>
+
+            <!--Tags-->
+            <div class="page-footer mt-5">
+              <span>
+                <i class="bi bi-tags"></i>
+                Tags:
+                <ul class="tags">
+                  {% for tag in i.tags.all %}
+                  <li><a style="padding: .3rem;" class="badge rounded-pill text-dark"
+                      href="{% url 'MArticles:article-tags' tag.slug %}">#{{tag}}</a></li>
+                  {% endfor %}
+                </ul>
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+{% endblock %}

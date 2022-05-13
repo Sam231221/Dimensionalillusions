@@ -1,0 +1,17 @@
+{% extends 'frontendbase.html' %}
+{% block title %}
+<title>AcadePra | 500 Error</title>
+{% endblock %}
+{% block banner %}
+{% endblock %}
+{% block main %}
+<main class="p-3 mt-5"  data-aos="fade-up">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center" style="margin-top: 7rem;">
+        <h1>Oops!  500 Error Occured.</h1>
+        <p class="lead">We're sorry for the inconvience. There occured some problem in our backend</p>
+        <p class="lead">
+            <a href="{% url 'Ehub:home' %}" class="btn btn-lg btn-dark fw-bold border-white ">Visit Home Page</a>
+        </p>
+    </div>
+</main>
+{% endblock %}
