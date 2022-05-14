@@ -3,9 +3,6 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
 
-admin.site.site_header = "Acadepra Adminsitration"
-admin.site.site_title = "Acadepra Panel"
-admin.site.index_title = "Welcome to Acadepra Admin Site"
 """
 url() uses a regular expression to pattern match the
 URL in your browser to a module in your Django project.
@@ -14,10 +11,8 @@ urlpatterns = [  # contains list of url() instances.
     url(r"^admin/", admin.site.urls),
     url(r"^ckeditor/", include("ckeditor_uploader.urls")),
     url(r"^", include("Dimensionalillusions.apps.EHub.urls", namespace="Ehub")),
-    url(r"^", include("Dimensionalillusions.apps.MCourses.urls", namespace="Courses")),
     url(r"^", include("Dimensionalillusions.apps.MArticles.urls", namespace="MArticles")),
-    url(r"^", include("Dimensionalillusions.apps.MProgrammingLanguage.urls")),
-    url(r"^", include("Dimensionalillusions.apps.MSoftwareDevelopment.urls")),
+
 ]
 
 from django.conf import settings

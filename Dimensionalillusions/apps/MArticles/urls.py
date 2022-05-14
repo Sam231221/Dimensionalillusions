@@ -20,7 +20,7 @@ from .views import (
 )
 
 article_dict = {
-    "queryset": Article.modelmanager.all(),
+    "queryset": Article.modelmanager.filter(visibility="Public"),
 }
 app_name = "MArticles"
 

@@ -1,1 +1,1 @@
-web: gunicorn Dtheopra.wsgi 
+web: gunicorn Dimensionalillusions.wsgi 

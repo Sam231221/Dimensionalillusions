@@ -1,0 +1,313 @@
+{% extends 'frontendbase.html' %}
+{% load static %}
+{% block title %}
+<title>{{i.title}}</title>
+{% endblock %}
+{% block extra %}
+{% endblock %}
+{% block meta %}
+<link rel="canonical" href="{{request.scheme}}://{{ request.META.HTTP_HOST }}{{i.get_absolute_url}}">
+
+<meta name="author" content="{{i.author}}" />
+
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="{{ request.META.HTTP_HOST }} Articles" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{i.title}}" />
+<meta property="og:author" content="Sam" />
+<meta property="og:url" content="{{request.scheme}}://{{ request.META.HTTP_HOST }}{{i.get_absolute_url}}" />
+
+<meta property="og:image" content="{{i.thumbnail}}">
+<meta property="og:image:secure_url" content="{{i.thumbnail}}">
+<meta property="og:image:width" content="849">
+<meta property="og:image:height" content="400">
+<meta property="og:image:alt" content="{{i.title}}">
+<meta property="og:image:type" content="image/png">
+
+<meta property="article:published_time" content="{{i.published_date}}" />
+<meta property="article:section" content="Articles" />
+<meta property="article:author" content="{{i.author}}" />
+
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
+{% block main %}
+<style>
+  pre {
+    position: relative;
+    border: 2rem;
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+  }
+
+  pre>i {
+    font-size: 23px;
+    position: absolute;
+    right: 12px;
+    color: white;
+    top: 7px;
+  }
+
+  i:hover {
+    cursor: pointer
+  }
+</style>
+
+<main id="main ">
+
+  <section id="blog" class="blog">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <!--Page Description-->
+        <div class="col-lg-8 pages">
+
+          <article class="page single-page">
+
+            <div class="img-responsive">
+              {% if i.thumbnail %}
+              <img src="{{i.thumbnail}}" alt="article" class="img-fluid">
+              {% else %}
+              <img
+                src="https://res.cloudinary.com/dcgrv6shk/image/upload/v1635600338/mediafiles/profiles/placeholder_v7pmin.png"
+                alt="article" class="img-fluid">
+              {% endif %}
+            </div>
+
+            <br>
+            <h1 class="topic-title">{{i.title}}</h1>
+
+            {% include 'utilities/article-minidetail-toolkit.html' %}
+            <div class="page-description">
+              <p>{{i.description|safe}}</p>
+            </div>
+
+            <br>
+
+            <!--Tags-->
+            <div class="page-footer mt-5">
+              <span>
+                <i class="bi bi-tags"></i>
+                Tags:
+                <ul class="tags">
+                  {% for tag in i.tags.all %}
+                  <li><a style="padding: .3rem;" class="badge rounded-pill text-dark"
+                      href="{% url 'MArticles:article-tags' tag.slug %}">#{{tag}}</a></li>
+                  {% endfor %}
+                </ul>
+              </span>
+
+            </div>
+
+            <!--Comments-->
+            <div class="blog-comments">
+              <br>
+              <h2>
+                {% with allcomments.count as total_comments %}
+                <i class="bi bi-chat-dots"></i>
+                {{ total_comments }} Comment{{ total_comments|pluralize }}
+                {% endwith %}
+              </h2>
+              <hr>
+
+              {% load mptt_tags %}
+              {% recursetree comments %}
+
+              <div id="" class="comment">
+
+                <div id="{{node.id}}" class="d-flex">
+
+                  {% if i.author.image %}
+                  <div class="comment-img"><img class="rounded-circle" width="32" height="62"
+                      src="{{i.author.image.url}}" alt="profile">
+                  </div>
+                  {% else %}
+                  <div class="comment-img">
+                    <img
+                      src="https://res.cloudinary.com/dcgrv6shk/image/upload/v1635603182/mediafiles/profiles/user_iwpit9.png"
+                      alt="profile" width="32" height="62" class="rounded-circle">
+                  </div>
+                  {% endif %}
+
+                  <div>
+                    <h5><a href="">By {{node.user}}</a>
+                    </h5>
+                    <time>{{node.commented_on}}</time>
+                    <p>{{ node.content }}</p>
+                    <div id="{{node.id}}" class="comment m-0"></div>
+
+                    {% if node.level < 4 %} {% if request.user.username %} <button class="primary-btn" type="button"
+                      onclick="triggerCommentForm({{node.id}})" class="btn btn-primary">
+                      Reply
+                      </button>
+                      {% else %}
+                      <button type="button" class="reply primary-btn" data-bs-container="body" data-bs-toggle="popover"
+                        data-bs-placement="bottom" data-bs-content="login to comment">
+                        <i class="bi bi-reply-fill"></i> Reply
+                      </button>
+                      {% endif %}
+
+                      {% endif %}
+                  </div>
+                </div>
+
+                {% if not node.is_leaf_node %}
+                <div id="comment-reply-1" class="comment comment-reply">
+                  <div class="children">
+                    {{ children }}
+                  </div>
+                </div>
+                {% endif %}
+
+              </div>
+
+              {% endrecursetree %}
+
+
+              {% if request.user.is_authenticated %}
+              <div class="reply-form">
+                <h4>Leave a Reply</h4>
+                <form method="POST">
+                  <div class="row">
+                    {% csrf_token %}
+                    {{comment_form.as_p}}
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                </form>
+              </div>
+              {% else %}
+              <h4>Login to Comment</h4>
+              {% endif %}
+
+
+              <!--Pagination-->
+              <div class="blog-pagination">
+
+                {% if comments.has_other_pages %}
+
+                <ul class="justify-content-center">
+                  {% if comments.has_previous %}
+                  <li class=""><a class="" href="?comments={{ comments.previous_page_number }}">Previous</a>
+                  </li>
+                  {% else %}
+                  <li class=""><a class="d-none" href="#">Previous</a></li>
+                  {% endif %}
+
+
+                  {% for num in comments.paginator.page_range %}
+
+                  {% if comments.number == l %}
+                  <li class="active"><span class="">{{ num }} <span class="sr-only">(current)</span></span>
+                  </li>
+                  {% else %}
+                  <li><a class="" href="?comments={{ num }}">{{ num }}</a></li>
+                  {% endif %}
+
+                  {% endfor %}
+
+
+                  {% if comments.has_next %}
+                  <li class=""><a class="" href="?comments={{ comments.next_page_number }}">Next</a></li>
+                  {% else %}
+                  <li class=""><a class="d-none" href="#">Next</a></li>
+                  {% endif %}
+
+                </ul>
+                {% endif %}
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+        <!--SideBar-->
+        {% include 'utilities/article-filters.html' %}
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://clipboardjs.com/dist/clipboard.min.js"></script>
+<script>
+
+  //Setting Code id to 1
+  let nodes = document.querySelectorAll('code')
+  let i = 0;
+  for (let node of nodes) {
+    val = 'code' + i;
+    node.setAttribute('id', val);
+    i++;
+  }
+
+  //CREATE BUTTON FOR EACH CODE
+  let PreNodes = document.getElementsByTagName('pre')
+  for (let i = 0; i < PreNodes.length; i++) {
+    let nodeElem = document.createElement('i');
+    nodeElem.className = "bi bi-clipboard-plus copybutton";
+    let val = '#code' + i
+    nodeElem.setAttribute("data-clipboard-target", val)
+    nodeElem.setAttribute("id", i)
+
+    nodeElem.setAttribute("data-bs-toggle", "tooltip")
+    nodeElem.setAttribute("data-bs-placement", "top")
+    nodeElem.setAttribute("title", "Copy")
+    PreNodes[i].insertAdjacentElement("beforeend", nodeElem)
+  }
+
+  ///FIRE EVENT
+  let clipboard = new ClipboardJS('.copybutton');
+  let copybuttons = document.querySelectorAll('.copybutton');
+  console.log(copybuttons)
+  for (let copybutton of copybuttons) {
+    copybutton.addEventListener('click', () => {
+      copybutton.classList.remove('bi-clipboard-plus');
+      copybutton.classList.add('bi-clipboard-check');
+      let intrvrl = setTimeout(() => {
+        copybutton.classList.remove('bi-clipboard-check');
+        copybutton.classList.add('bi-clipboard-plus');
+
+      }, 1000);
+    })
+  }
+
+  //REPLY COMMENT FORM
+  const formExit = () => {
+    document.getElementById("newForm").remove();
+  }
+  const triggerCommentForm = (id) => {
+
+    if (document.contains(document.getElementById("newForm"))) {
+      document.getElementById("newForm").remove();
+    }
+
+    var d1 = document.getElementById(id);
+
+    d1.insertAdjacentHTML('afterend',
+      '<form id="newForm" class="reply-form py-2" method="post"> \
+                <div class="d-flex justify-content-between"><h2>Reply:</h2><div><button type="button" class="btn btn-sm btn-danger" onclick="formExit()"">Close</button></div></div> \
+                <select name="parent" class="d-none" id="id_parentt"> \
+                <option value="' + id + '" selected="' + id + '"></option> \
+                </select> \
+                <label for="id_content">Content:</label> \
+                <textarea name="content" cols="40" rows="5" class="form-control" required id="id_content"></textarea> \
+                {% csrf_token %} \
+                <button type="submit" class="mt-3 btn btn-primary">Submit</button> \
+              </form>');
+  }
+
+  $('#myForm').trigger("reset");
+</script>
+{% endblock %}

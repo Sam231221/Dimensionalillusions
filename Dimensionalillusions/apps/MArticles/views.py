@@ -1,6 +1,4 @@
 from Dimensionalillusions.apps.EHub.forms import EmailSubscriptionForm
-from Dimensionalillusions.apps.MProgrammingLanguage.models import ProgrammingLanguage
-from Dimensionalillusions.apps.MSoftwareDevelopment.models import Framework
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.http import HttpResponse

@@ -11,28 +11,12 @@ from .models import Contact, EmailSubscription
 
 # Custom Error Handlers
 def response404_error_handler(request, exception=None):
-    return render(request, "404error.html")
+    return render(request, "utilities/404error.html")
 
 
 def response500_error_handler(request, exception=None):
-    return render(request, "500error.html")
+    return render(request, "utilities/500error.html")
 
-
-class EmailSubscriptionView(View):
-    def post(self, request):
-        emailform = EmailSubscriptionForm(request.POST)
-        if emailform.is_valid():
-            getemail = request.POST.get("email")
-            email, created = EmailSubscription.objects.get_or_create(email=getemail)
-            print(email)
-            if created:
-                styling = "style='display:flex;justify-content:center;padding:14rem;' "
-                message = "<h1 class='align-center' " + styling + ">Email Subscibed!</h1>"
-                return HttpResponse(message)
-            else:
-                styling = "style='display:flex;justify-content:center;padding:14rem;' "
-                message = "<h1 class='align-center' " + styling + ">Email Already Subscibed!</h1>"
-                return HttpResponse(message)
 
 
 class HomeView(TemplateView):
@@ -80,6 +64,24 @@ class PrivacyPolicy(TemplateView):
 
 class TermsOfUse(TemplateView):
     template_name = "termsofuse.html"
+
+class EmailSubscriptionView(View):
+    def post(self, request):
+        emailform = EmailSubscriptionForm(request.POST)
+        if emailform.is_valid():
+            getemail = request.POST.get("email")
+            email, created = EmailSubscription.objects.get_or_create(email=getemail)
+            print(email)
+            if created:
+                styling = "style='display:flex;justify-content:center;padding:14rem;' "
+                message = "<h1 class='align-center' " + styling + ">Email Subscibed!</h1>"
+                return HttpResponse(message)
+            else:
+                styling = "style='display:flex;justify-content:center;padding:14rem;' "
+                message = "<h1 class='align-center' " + styling + ">Email Already Subscibed!</h1>"
+                return HttpResponse(message)
+
+
 
 
 # REGISTRATION AND LOGIN SECTION
