@@ -54,15 +54,20 @@ class ArticleView(View):
         paginator = Paginator(
             all_articles, 8
         )  # creating an instance of Paginator taking all posts and create 6 items per page
-        page_var = "articles"  # appears as ->/articles/?articles=2
+        print('paginator:', paginator)
+
+        page_var = "page"  # appears as ->/articles/?articles=2
         page = request.GET.get(page_var)  # get the string
         print('page:',page)
         try:
             paginate_queryset = paginator.page(page)
+            print('tyyblock:', paginate_queryset)
         except PageNotAnInteger:
             paginate_queryset = paginator.page(1)
+            print('notantInteger:', paginate_queryset)
         except EmptyPage:
             paginate_queryset = paginator.page(paginator.num_pages)
+            print('empty:', paginate_queryset)
 
         context = {
             "page_var": page_var,

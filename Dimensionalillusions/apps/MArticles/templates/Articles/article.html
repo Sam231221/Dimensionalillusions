@@ -22,6 +22,7 @@
       <div class="row">
 
         <div class="col-lg-8 entries">
+          {% if queryset %}
           {% for i in queryset %}
           <article class="page">
             <div class="img-responsive">
@@ -47,6 +48,7 @@
           </article>
           {% endfor %}
 
+          {% endif %}
           <!--Pagination-->
           <div class="blog-pagination">
 

@@ -7,7 +7,7 @@ from .environs import Env
 env = Env()
 env.read_env()  # read .env file, if it exists
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = env.str("SECRET_KEY")
 SITE_ID = 2
 
