@@ -1,0 +1,21 @@
+<div class="topic-minidetail">
+    <ul>
+      <li class="d-flex align-items-center"><i class="bi bi-person"></i> {{i.author}} </li><p class="separator"> | </p>
+      <li class="d-flex align-items-center"><i class="bi bi-calendar"></i><time>posted on {{i.published_date}}
+         </time> </li><p class="separator"> | </p>
+      <li class="d-flex align-items-center"><i class="bi bi-calendar-check"></i><time>updated on
+          {{i.last_updated}} </time></li><p class="separator"> | </p>
+      <li class="d-flex align-items-center"><i class="bi bi-book"></i>Read time:{{i.get_read_time}} </li>
+      {% if request.user.is_authenticated %}
+
+      {% if bookmarked %}
+      <li><a href="{% url 'MArticles:remove-from-bookmark' i.id %}"><i class="bi bi-bookmark-dash"></i></a>Bookmark</li>
+
+      {% else %}
+      <li> <a href="{% url 'MArticles:add-to-bookmark' i.id %}"><i class="bi bi-bookmark-plus"></i></a>Bookmark</li>
+      {% endif %}
+
+      {% endif %}
+    </ul>
+
+  </div> 
