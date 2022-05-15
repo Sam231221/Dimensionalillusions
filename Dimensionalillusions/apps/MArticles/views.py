@@ -56,6 +56,7 @@ class ArticleView(View):
         )  # creating an instance of Paginator taking all posts and create 6 items per page
         page_var = "articles"  # appears as ->/articles/?articles=2
         page = request.GET.get(page_var)  # get the string
+        print('page:',page)
         try:
             paginate_queryset = paginator.page(page)
         except PageNotAnInteger:
