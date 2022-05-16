@@ -22,7 +22,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",  # Explict middleware
     "csp.middleware.CSPMiddleware",
 ]
-ALLOWED_HOSTS = ["127.0.0.1",'localhost', "b8a4-2400-1a00-bde0-c2b5-67ce-b6e4-cee1-3031.in.ngrok.io"]
+ALLOWED_HOSTS = ["127.0.0.1",'localhost', "bb4c-2400-1a00-bde0-c2b5-67ce-b6e4-cee1-3031.in.ngrok.io "]
 
 """
 #Django Debugger Toolbar
