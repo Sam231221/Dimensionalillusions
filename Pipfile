@@ -36,6 +36,7 @@ faker = "==13.3.3"
 black = "==22.1.0"
 coverage = "==6.3.2"
 requests = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

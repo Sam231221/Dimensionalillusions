@@ -1,3 +1,4 @@
+import dj_database_url
 from Dimensionalillusions.base import *
 
 from .environs import Env
@@ -14,7 +15,10 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+
+
     "django.middleware.common.CommonMiddleware",
+
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -22,7 +26,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",  # Explict middleware
     "csp.middleware.CSPMiddleware",
 ]
-ALLOWED_HOSTS = ["127.0.0.1",'localhost', "bb4c-2400-1a00-bde0-c2b5-67ce-b6e4-cee1-3031.in.ngrok.io "]
+ALLOWED_HOSTS = ['5e9f-2400-1a00-bde0-9b8-b491-1769-6650-fccc.in.ngrok.io']
 
 """
 #Django Debugger Toolbar
@@ -55,48 +59,6 @@ DATABASES = {
     }
 }
 
-
-# Content Security Policy
-CSP_DEFAULT_SRC = ("none",)
-CSP_BASE_URI = ("'none'",)
-CSP_FRAME_ANCESTORS = ("'none'",)
-CSP_OBJECT_SRC = ("none",)
-CSP_STYLE_SRC = (
-    "'self'",
-    "'unsafe-inline'",
-    "cdn.jsdelivr.net",
-      "https://fonts.googleapis.com",
-    "cdnjs.cloudflare.com",
-    "fonts.googleapis.com",
-    "stackpath.bootstrapcdn.com",
-    "getbootstrap.com",
-)
-CSP_SCRIPT_SRC = (
-    "'self'",
-    "'unsafe-inline'",
-    "clipboardjs.com",
-    "ajax.googleapis.com",
-    "cdn.jsdelivr.net",
-    "cdn.ckeditor.com",
-    "stackpath.bootstrapcdn.com",
-    "code.jquery.com",
-    "unpkg.com",
-    "cdnjs.cloudflare.com",
-    "code.jquery.com",
-    "getbootstrap.com",
-)
-CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
-CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
-
-CSP_FRAME_SRC = ("'self'",)
-CSP_CONNECT_SRC = (
-    "'self'",
-    "http://*.cke-cs.com",
-    "https://docx-converter.cke-cs.com",
-    "https://pdf-converter.cke-cs.com",
-)
-
-
 """
 
 DATABASES = {
@@ -112,7 +74,58 @@ DATABASES = {
 
 """
 
-import dj_database_url
+
+
+# Content Security Policy
+CSP_DEFAULT_SRC = ("none",)
+CSP_BASE_URI = ("'none'",)
+CSP_FRAME_ANCESTORS = ("https://www.facebook.com",)
+CSP_OBJECT_SRC = ("none",)
+CSP_STYLE_SRC = (
+    "'self'",
+    "'unsafe-inline'",
+    "cdn.jsdelivr.net",
+
+    "cdnjs.cloudflare.com",
+    "fonts.googleapis.com",
+    "stackpath.bootstrapcdn.com",
+    "getbootstrap.com",
+)
+CSP_SCRIPT_SRC = (
+    "'self'",
+    "'unsafe-inline'",
+    "clipboardjs.com",
+    "ajax.googleapis.com",
+    "cdn.jsdelivr.net",
+    "cdn.ckeditor.com",
+    "connect.facebook.net",
+    "stackpath.bootstrapcdn.com",
+    "code.jquery.com",
+    "unpkg.com",
+    "cdnjs.cloudflare.com",
+    "code.jquery.com",
+    "getbootstrap.com",
+)
+CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
+CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
+
+CSP_FRAME_SRC = (
+    "'self'",
+    "https://connect.facebook.net",
+    "https://facebook.com",
+)
+CSP_CONNECT_SRC = (
+    "'self'",
+    "https://connect.facebook.net",
+    "https://www.facebook.com",
+    "https://fonts.googleapis.com",
+    "http://*.cke-cs.com",
+    "https://docx-converter.cke-cs.com",
+    "https://pdf-converter.cke-cs.com",
+)
+
+
+
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES["default"].update(db_from_env)

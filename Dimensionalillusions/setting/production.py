@@ -61,7 +61,7 @@ CSP_SCRIPT_SRC = (
     "ajax.googleapis.com",
     "cdn.jsdelivr.net",
     "cdn.ckeditor.com",
-    "connect.facebook.net"
+    "connect.facebook.net",
     "stackpath.bootstrapcdn.com",
     "code.jquery.com",
     "unpkg.com",
