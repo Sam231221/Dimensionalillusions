@@ -40,10 +40,11 @@ DATABASES = {
 }
 
 
+
 # Content Security Policy
 CSP_DEFAULT_SRC = ("none",)
 CSP_BASE_URI = ("'none'",)
-CSP_FRAME_ANCESTORS = ("'none'",)
+CSP_FRAME_ANCESTORS = ("https://www.facebook.com",)
 CSP_OBJECT_SRC = ("none",)
 CSP_STYLE_SRC = (
     "'self'",
@@ -72,14 +73,20 @@ CSP_SCRIPT_SRC = (
 CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
 CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
 
-CSP_FRAME_SRC = ("'self'",)
+CSP_FRAME_SRC = (
+    "'self'",
+)
 CSP_CONNECT_SRC = (
     "'self'",
+    "https://connect.facebook.net",
+    "https://www.facebook.com",
     "https://fonts.googleapis.com",
     "http://*.cke-cs.com",
     "https://docx-converter.cke-cs.com",
     "https://pdf-converter.cke-cs.com",
 )
+
+
 
 
 # CACHE FRAMEWORK
