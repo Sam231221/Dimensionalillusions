@@ -79,7 +79,14 @@ DATABASES = {
 # Content Security Policy
 CSP_DEFAULT_SRC = ("none",)
 CSP_BASE_URI = ("'none'",)
-CSP_FRAME_ANCESTORS = ("https://www.facebook.com/",)
+
+'''
+ specifies valid parents that may embed a page using <frame>, 
+ <iframe>, <object>, <embed>, or <applet>.
+'''
+CSP_FRAME_ANCESTORS = ("'none'",)
+
+
 CSP_OBJECT_SRC = ("none",)
 CSP_STYLE_SRC = (
     "'self'",
@@ -108,12 +115,25 @@ CSP_SCRIPT_SRC = (
 CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
 CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
 
+
+
+'''
+frame-src
+The HTTP Content-Security-Policy (CSP) frame-src directive specifies valid sources for nested
+ browsing contexts loading using elements such as <frame> and <iframe>.
+'''
 CSP_FRAME_SRC = (
     "'self'",
+    "https://www.facebook.com",
 )
+
+'''
+guards the several browsers mechanisms that can fetch HTTP Requests.
+'''
+
 CSP_CONNECT_SRC = (
     "'self'",
-    "https://connect.facebook.net",
+
     "https://www.facebook.com",
     "https://fonts.googleapis.com",
     "http://*.cke-cs.com",
