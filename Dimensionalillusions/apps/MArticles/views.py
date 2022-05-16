@@ -48,6 +48,9 @@ ARTICLES
 
 class ArticleView(View):
     def get(self, request):
+        import binascii
+        import os
+        print(binascii.hexlify(os.urandom(25)))
         all_articles = Article.modelmanager.all().order_by(
             "published_date"
         )  # it is same as all_posts= Post.objects.filter(status="published")

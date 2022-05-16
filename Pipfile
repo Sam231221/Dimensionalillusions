@@ -35,6 +35,7 @@ django-jazzmin = "==2.4.9"
 faker = "==13.3.3"
 black = "==22.1.0"
 coverage = "==6.3.2"
+requests = "*"
 
 [dev-packages]
 
