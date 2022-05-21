@@ -643,6 +643,14 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+#about{
+  margin-top: 23px;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+}
 .about .content h3 {
   font-weight: 600;
   font-size: 26px;
