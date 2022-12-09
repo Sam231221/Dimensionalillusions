@@ -251,6 +251,7 @@
       mirror: false
     })
   });
+<<<<<<< HEAD
 
 
     var chatbox = document.getElementById('fb-customer-chat');
@@ -272,3 +273,5 @@
     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+=======
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95

@@ -1,376 +1,484 @@
 <!DOCTYPE html>
 <html lang="en-us">
-{% load static %}
+  {% load static %}
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  {% block title %}
-  <title>
-    Dimensional illusions | Browse Computer Science Related Course, Surf Programming
-    Languages, Articles...
-  </title>
-  {% endblock %}
+    {% block title %}
+    <title>
+      Dimensional illusions | Browse Computer Science Related Course, Surf
+      Programming Languages, Articles...
+    </title>
+    {% endblock %} {% block meta %}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ request.META.HTTP_HOST }}" />
+    <meta
+      content="Find and Watch over Courses on Data structure and Algorithm,Graph theory and Programming languages with thousands of articles related to Computer Science and Information technology."
+      name="description"
+    />
+    <meta content="{% for tag in tags %}{{tag}},{% endfor %}" name="keywords" />
+    <link
+      rel="canonical"
+      href="{{request.scheme}}://{{ request.META.HTTP_HOST }}"
+    />
+    {% endblock %}
 
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'assets/img/favicon.png' %}"
+      rel="icon"
+    />
 
-  {% block meta %}
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="{{ request.META.HTTP_HOST }}" />
-  <meta
-    content="Find and Watch over Courses on Data structure and Algorithm,Graph theory and Programming languages with thousands of articles related to Computer Science and Information technology."
-    name="description" />
-  <meta content="{% for tag in tags %}{{tag}},{% endfor %}" name="keywords" />
-  <link rel="canonical" href="{{request.scheme}}://{{ request.META.HTTP_HOST }}" />
-  {% endblock %}
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/favicon.png' %}" rel="icon" />
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/frontendbase.css' %}" rel="stylesheet" />
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+    <link
+      href="{% static 'assets/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Sam231221/AcadepraS@master/night-owl.css"
+      integrity="sha384-+N75jEss7NoFBgfsVZdRmY7BIlwSw3guBvGUBm/ktfumlMEgko+qxIsfhn/uVizo"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-  <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/frontendbase.css' %}" rel="stylesheet">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"
+      integrity="sha512-IaaKO80nPNs5j+VLxd42eK/7sYuXQmr+fyywCNA0e+C6gtQnuCXNtORe9xR4LqGPz5U9VpH+ff41wKs/ZmC3iA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <link href="{% static 'assets/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+      integrity="sha384-He3RckdFB2wffiHOcESa3sf4Ida+ni/fw9SSzAcfY2EPnU1zkK/sLUzw2C5Tyuhj"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sam231221/AcadepraS@master/night-owl.css"
-    integrity="sha384-+N75jEss7NoFBgfsVZdRmY7BIlwSw3guBvGUBm/ktfumlMEgko+qxIsfhn/uVizo" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css"
+      integrity="sha512-nOk7sj5T6Zi3Ond5VHhc+L4WHvRuRhV/cOcWWDl2mOyTetiIfuv56UJzD0yYhz9Kqwk1PpU0/PX5+qpX43hVWg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"
-    integrity="sha512-IaaKO80nPNs5j+VLxd42eK/7sYuXQmr+fyywCNA0e+C6gtQnuCXNtORe9xR4LqGPz5U9VpH+ff41wKs/ZmC3iA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
+      integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
-    integrity="sha384-He3RckdFB2wffiHOcESa3sf4Ida+ni/fw9SSzAcfY2EPnU1zkK/sLUzw2C5Tyuhj" crossorigin="anonymous" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css"
-    integrity="sha512-nOk7sj5T6Zi3Ond5VHhc+L4WHvRuRhV/cOcWWDl2mOyTetiIfuv56UJzD0yYhz9Kqwk1PpU0/PX5+qpX43hVWg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
-    integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-</head>
-
-<body>
-  {% block extra %}
-  {% include 'utilities/extras.html' %}
-  {% endblock extra %}
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <div class="container">
-        <a href="{% url 'Ehub:home' %}">
-          <h5 class="mb-0"><strong>DIMENSIONAL ILLUSIONS</strong></h5>
-        </a>
-
-      </div>
-      <!-- <a href="{% url 'Ehub:home' %}" class="logo"><img src="{% static 'assets/img/logo.png' %}" alt="logo"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto {% block active_home %} {% endblock %}" href="{% url 'Ehub:home' %}">Home</a>
-          </li>
-          <li><a class="nav-link scrollto {% block active_blog %}{% endblock %}"
-              href="{% url 'MArticles:articles' %}">Blog</a></li>
-          <li><a class="nav-link scrollto {% block active_services %}{% endblock %}"
-              href="{% url 'Ehub:services' %}">Services</a></li>
-          <li><a class="nav-link scrollto {% block active_aboutus %}{% endblock %}"
-              href="{% url 'Ehub:about-us' %}">About
-              Us</a></li>
-          <li><a class="nav-link scrollto {% block active_privacypolicy %}{% endblock %}"
-              href="{% url 'Ehub:privacy-policy' %}">Privacy Policy</a></li>
-          <li><a class="nav-link scrollto {% block active_termsofuse %}{% endblock %}"
-              href="{% url 'Ehub:termsofuse' %}">Terms
-              of Use</a></li>
-          <li><a class="nav-link scrollto {% block active_contactus %}{% endblock %}"
-              href="{% url 'Ehub:contact-us' %}">Contact
-              Us</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-
-    </div>
-  </header>
-
-  {% block banner %}
-
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Turn your Thoughts into <span>Illusions</span></h1>
-      <h2>Build/Order your own Web Apps with Us using Modern Technologies, Tools and Frameworks. Browse Information
-        related to Computer
-        Science,Software,
-        Technology and many more.</h2>
-      <div class="d-flex">
-        <a href="{% url 'Ehub:sign-up' %}" class="btn-get-started scrollto">Sign Up</a>
-
-      </div>
-    </div>
-  </section>
-
-  {% endblock %}
-
-
-  <main id="main">
-    {% block main %}
-    <section id="technology" class="technology">
-      <div class="container">
-        <div class="section-title">
-          <h2>Technology</h2>
-          <p>That We Cover Up</p>
+  <body>
+    {% block extra %} {% include 'utilities/extras.html' %} {% endblock extra %}
+    <header id="header" class="d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="container">
+          <a href="{% url 'Ehub:home' %}">
+            <h5 class="mb-0"><strong>DIMENSIONAL ILLUSIONS</strong></h5>
+          </a>
         </div>
-        <div class="row gy-4">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class='bx bxl-html5'></i></div>
-              <h4 class="title"><a href="">HTML and CSS</a></h4>
-              <p class="description">Base language for building any web pages.</p>
-            </div>
-          </div>
+        <!-- <a href="{% url 'Ehub:home' %}" class="logo"><img src="{% static 'assets/img/logo.png' %}" alt="logo"></a>-->
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class='bx bxl-javascript'></i></div>
-              <h4 class="title"><a href="">Javascript</a></h4>
-              <p class="description">Most Widely-adopted browser language, fully integrated with HTML/CSS.</p>
-            </div>
-          </div>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_home %} {% endblock %}"
+                href="{% url 'Ehub:home' %}"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_blog %}{% endblock %}"
+                href="{% url 'MArticles:articles' %}"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_services %}{% endblock %}"
+                href="{% url 'Ehub:services' %}"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_aboutus %}{% endblock %}"
+                href="{% url 'Ehub:about-us' %}"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_privacypolicy %}{% endblock %}"
+                href="{% url 'Ehub:privacy-policy' %}"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_termsofuse %}{% endblock %}"
+                href="{% url 'Ehub:termsofuse' %}"
+                >Terms of Use</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link scrollto {% block active_contactus %}{% endblock %}"
+                href="{% url 'Ehub:contact-us' %}"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon">
-                <i class='bx bxl-python'></i>
-              </div>
-              <h4 class="title"><a href="">Python</a></h4>
-              <p class="description">High Programming Language great for Data Science, Machine
-                Learning and Web Development.
-              </p>
-            </div>
-          </div>
+    {% block banner %}
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon">
-                <i class='bx bxl-django'></i>
-              </div>
-              <h4 class="title"><a href="">Django</a></h4>
-              <p class="description">Python Popular Web framework that follows MVC design pattern.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class='bx bxl-aws'></i></div>
-              <h4 class="title"><a href="">AWS</a></h4>
-              <p class="description">Iass provider to individuals, companies and governments on a metered pay-as-you-go
-                basis. T</p>
-            </div>
-          </div>
-
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1>Turn your Thoughts into <span>Illusions</span></h1>
+        <h2>
+          Build/Order your own Web Apps with Us using Modern Technologies, Tools
+          and Frameworks. Browse Information related to Computer
+          Science,Software, Technology and many more.
+        </h2>
+        <div class="d-flex">
+          <a href="{% url 'Ehub:sign-up' %}" class="btn-get-started scrollto"
+            >Sign Up</a
+          >
         </div>
-
       </div>
     </section>
 
+    {% endblock %}
 
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img rounded"
-                  alt="">
-                <h3>Anjan Shrestha</h3>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  This site is a great resource for learning web development and deployment.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+    <main id="main">
+      {% block main %}
+      <section id="technology" class="technology">
+        <div class="container">
+          <div class="section-title">
+            <h2>Technology</h2>
+            <p>That We Cover Up</p>
+          </div>
+          <div class="row gy-4">
+            <div
+              class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            >
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon"><i class="bx bxl-html5"></i></div>
+                <h4 class="title"><a href="">HTML and CSS</a></h4>
+                <p class="description">
+                  Base language for building any web pages.
                 </p>
               </div>
             </div>
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img rounded"
-                  alt="">
-                <h3>Sajan Poudel</h3>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  I used to get messed up with web design. Then I found this site, started copy pasting the code
-                  snippets
-                  provided. It has been so much helpful.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            <div
+              class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            >
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon"><i class="bx bxl-javascript"></i></div>
+                <h4 class="title"><a href="">Javascript</a></h4>
+                <p class="description">
+                  Most Widely-adopted browser language, fully integrated with
+                  HTML/CSS.
                 </p>
               </div>
             </div>
 
+            <div
+              class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            >
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon">
+                  <i class="bx bxl-python"></i>
+                </div>
+                <h4 class="title"><a href="">Python</a></h4>
+                <p class="description">
+                  High Programming Language great for Data Science, Machine
+                  Learning and Web Development.
+                </p>
+              </div>
+            </div>
 
+            <div
+              class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            >
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon">
+                  <i class="bx bxl-django"></i>
+                </div>
+                <h4 class="title"><a href="">Django</a></h4>
+                <p class="description">
+                  Python Popular Web framework that follows MVC design pattern.
+                </p>
+              </div>
+            </div>
 
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section>
-
-
-    {% endblock %}
-
-  </main>
-
-
-
-
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    {% block footer_extra %}
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to get notifications every time we upload a new content on our website.</p>
-            <form action="{% url 'Ehub:email-subscription' %}" method="post">
-              {% csrf_token %} {{emailform.email}}
-              <input type="submit" value="Subscribe" />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endblock %}
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 footer-contact">
-            <h3 class="mb-0">DIMENSIONAL</h3>
-            <h3>ILLUSIONS</h3>
-            <p>
-              Machhapuchre Tole-3 <br>
-              Pokhara, Nepal<br>
-              <strong>Phone:</strong> 9867743856<br>
-              <strong>Email:</strong> dimensionalassistance37@gmail.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'Ehub:home' %}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i><a href="{% url 'Ehub:about-us' %}">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'Ehub:termsofuse' %}">Terms of Use</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'Ehub:privacy-policy' %}">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Video Editing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <div
+              class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+            >
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon"><i class="bx bxl-aws"></i></div>
+                <h4 class="title"><a href="">AWS</a></h4>
+                <p class="description">
+                  Iass provider to individuals, companies and governments on a
+                  metered pay-as-you-go basis. T
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="zoom-in">
+          <div
+            class="testimonials-slider swiper"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}"
+                    class="testimonial-img rounded"
+                    alt=""
+                  />
+                  <h3>Anjan Shrestha</h3>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    This site is a great resource for learning web development
+                    and deployment.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}"
+                    class="testimonial-img rounded"
+                    alt=""
+                  />
+                  <h3>Sajan Poudel</h3>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    I used to get messed up with web design. Then I found this
+                    site, started copy pasting the code snippets provided. It
+                    has been so much helpful.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      {% endblock %}
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      {% block footer_extra %}
+      <div class="footer-newsletter">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <h4>Join Our Newsletter</h4>
+              <p>
+                Subscribe to get notifications every time we upload a new
+                content on our website.
+              </p>
+              <form action="{% url 'Ehub:email-subscription' %}" method="post">
+                {% csrf_token %} {{emailform.email}}
+                <input type="submit" value="Subscribe" />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      {% endblock %}
 
-    <div class="container py-4">
-      <div class="text-center">
-        <div>
-          &copy; {% now "Y" %} Copyright. All Rights Reserved by
-          <strong><span>Dimensional illusions</span></strong>
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 footer-contact">
+              <h3 class="mb-0">DIMENSIONAL</h3>
+              <h3>ILLUSIONS</h3>
+              <p>
+                Machhapuchre Tole-3 <br />
+                Pokhara, Nepal<br />
+                <strong>Phone:</strong> 9867743856<br />
+                <strong>Email:</strong> dimensionalassistance37@gmail.com<br />
+              </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="{% url 'Ehub:home' %}">Home</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i
+                  ><a href="{% url 'Ehub:about-us' %}">About us</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="{% url 'Ehub:termsofuse' %}">Terms of Use</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="{% url 'Ehub:privacy-policy' %}">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Web Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Video Editing</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Graphic Design</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Our Social Networks</h4>
+
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"
+                  ><i class="bx bxl-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
 
-  <div id="preloader"></div>
+      <div class="container py-4">
+        <div class="text-center">
+          <div>
+            &copy; {% now "Y" %} Copyright. All Rights Reserved by
+            <strong><span>Dimensional illusions</span></strong>
+          </div>
+        </div>
+      </div>
+    </footer>
 
+    <div id="preloader"></div>
 
-  <!-- Thirdparty JS Files -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-    integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+    <!-- Thirdparty JS Files -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
+      integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% for message in messages %} {% if message.tags == "success" %}
+    <script>
+      var message = "{{message}}";
+      $.toast({
+        heading: "Success",
+        text: message,
+        showHideTransition: "slide",
+        icon: "info",
+        hideAfter: false, //interrupt auto hide after some inter
+        position: "top-right",
+      });
+    </script>
+    {% endif %} {% endfor %} {% block script %} {% endblock %}
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
-    integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  {% for message in messages %}
-  {% if message.tags == "success" %}
-  <script>
-    var message = '{{message}}';
-    $.toast({
-      heading: 'Success',
-      text: message,
-      showHideTransition: 'slide',
-      icon: 'info',
-      hideAfter: false, //interrupt auto hide after some inter
-      position: 'top-right'
-    })
-
-  </script>
-  {% endif %}
-  {% endfor %}
-
-  {% block script %} {% endblock %}
-
-
-  <script src="{% static 'assets/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'assets/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'assets/js/main.js' %}"></script>
-
-</body>
-
+    <script src="{% static 'assets/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
 </html>

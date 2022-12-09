@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import requests
+=======
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -17,12 +20,20 @@ def response404_error_handler(request, exception=None):
 
 def response500_error_handler(request, exception=None):
     return render(request, "utilities/500error.html")
+<<<<<<< HEAD
 from django.utils.datastructures import MultiValueDictKeyError
+=======
+
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 
 
 class HomeView(TemplateView):
     template_name = "frontendbase.html"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 class AboutView(TemplateView):
     template_name = "about-us.html"
 
@@ -73,12 +84,22 @@ class EmailSubscriptionView(View):
             email, created = EmailSubscription.objects.get_or_create(email=getemail)
             print(email)
             if created:
+<<<<<<< HEAD
                 messages.success(request,'Email Subscibed Successfully!')
                 return HttpResponseRedirect(request.META["HTTP_REFERER"])
             else:
                 
                 messages.error(request, 'Email Already Subscibed!')
                 return HttpResponseRedirect(request.META["HTTP_REFERER"])
+=======
+                styling = "style='display:flex;justify-content:center;padding:14rem;' "
+                message = "<h1 class='align-center' " + styling + ">Email Subscibed!</h1>"
+                return HttpResponse(message)
+            else:
+                styling = "style='display:flex;justify-content:center;padding:14rem;' "
+                message = "<h1 class='align-center' " + styling + ">Email Already Subscibed!</h1>"
+                return HttpResponse(message)
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 
 
 

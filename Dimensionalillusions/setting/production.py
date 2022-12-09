@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 from doctest import FAIL_FAST
 
+=======
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 from Dimensionalillusions.base import *
 
 from .environs import Env
@@ -7,11 +10,19 @@ from .environs import Env
 env = Env()
 env.read_env()  # read .env file, if it exists
 
+<<<<<<< HEAD
 DEBUG = False
 SECRET_KEY = env.str("SECRET_KEY")
 SITE_ID = 2
 
 ALLOWED_HOSTS = [".up.railway.app", "dimensionalillusions.com", "www.dimensionalillusions.com"]
+=======
+DEBUG = True  # When DEBUG =True Caching will Take Place
+SECRET_KEY = env.str("SECRET_KEY")
+SITE_ID = 2
+
+ALLOWED_HOSTS = ["acadepra.herokuapp.com", "acadepra.com", "www.acadepra.com"]
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 MIDDLEWARE = [
     "django.middleware.cache.UpdateCacheMiddleware",  # Explict middleware
     "django.middleware.security.SecurityMiddleware",
@@ -43,6 +54,7 @@ DATABASES = {
 # Content Security Policy
 CSP_DEFAULT_SRC = ("none",)
 CSP_BASE_URI = ("'none'",)
+<<<<<<< HEAD
 
 """
  specifies valid parents that may embed a page using <frame>, 
@@ -51,6 +63,9 @@ CSP_BASE_URI = ("'none'",)
 CSP_FRAME_ANCESTORS = ("'none'",)
 
 
+=======
+CSP_FRAME_ANCESTORS = ("'none'",)
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
 CSP_OBJECT_SRC = ("none",)
 CSP_STYLE_SRC = (
     "'self'",
@@ -68,7 +83,10 @@ CSP_SCRIPT_SRC = (
     "ajax.googleapis.com",
     "cdn.jsdelivr.net",
     "cdn.ckeditor.com",
+<<<<<<< HEAD
     "connect.facebook.net",
+=======
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
     "stackpath.bootstrapcdn.com",
     "code.jquery.com",
     "unpkg.com",
@@ -79,6 +97,7 @@ CSP_SCRIPT_SRC = (
 CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
 CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
 
+<<<<<<< HEAD
 
 """
 frame-src
@@ -98,6 +117,11 @@ CSP_CONNECT_SRC = (
     "'self'",
     "https://www.facebook.com",
     "https://fonts.googleapis.com",
+=======
+CSP_FRAME_SRC = ("'self'",)
+CSP_CONNECT_SRC = (
+    "'self'",
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95
     "http://*.cke-cs.com",
     "https://docx-converter.cke-cs.com",
     "https://pdf-converter.cke-cs.com",
@@ -156,8 +180,11 @@ EMAIL_PORT = 587
 
 EMAIL_HOST_USER = env.str("Email_Host_User")
 EMAIL_HOST_PASSWORD = env.str("Email_Host_Password")
+<<<<<<< HEAD
 
 
 CSRF_TRUSTED_ORIGINS = [
     "https://dimensionalillusions.up.railway.app",
 ]
+=======
+>>>>>>> 61b8ce055a3439493fc86f88f4a4b2dfff461a95

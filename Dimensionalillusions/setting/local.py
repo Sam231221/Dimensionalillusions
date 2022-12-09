@@ -1,4 +1,5 @@
 import dj_database_url
+
 from Dimensionalillusions.base import *
 
 from .environs import Env
@@ -15,10 +16,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-
-
     "django.middleware.common.CommonMiddleware",
-
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -26,7 +24,8 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",  # Explict middleware
     "csp.middleware.CSPMiddleware",
 ]
-ALLOWED_HOSTS = ['127.0.0.1']
+
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 """
 #Django Debugger Toolbar
@@ -39,25 +38,12 @@ INTERNAL_IPS = [
 ]
 
 
-
-"""
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-"""
-
-
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 
 
 """
@@ -78,10 +64,10 @@ DATABASES = {
 CSP_DEFAULT_SRC = ("none",)
 CSP_BASE_URI = ("'none'",)
 
-'''
+"""
  specifies valid parents that may embed a page using <frame>, 
  <iframe>, <object>, <embed>, or <applet>.
-'''
+"""
 CSP_FRAME_ANCESTORS = ("'none'",)
 
 
@@ -114,23 +100,22 @@ CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
 CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
 
 
-'''
+"""
 frame-src
 The HTTP Content-Security-Policy (CSP) frame-src directive specifies valid sources for nested
  browsing contexts loading using elements such as <frame> and <iframe>.
-'''
+"""
 CSP_FRAME_SRC = (
     "'self'",
     "https://www.facebook.com",
 )
 
-'''
+"""
 guards the several browsers mechanisms that can fetch HTTP Requests.
-'''
+"""
 
 CSP_CONNECT_SRC = (
     "'self'",
-
     "https://www.facebook.com",
     "https://fonts.googleapis.com",
     "http://*.cke-cs.com",

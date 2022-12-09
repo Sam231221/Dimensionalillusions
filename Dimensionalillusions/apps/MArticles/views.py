@@ -1,4 +1,3 @@
-from Dimensionalillusions.apps.EHub.forms import EmailSubscriptionForm
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.http import HttpResponse
@@ -6,6 +5,8 @@ from django.shortcuts import HttpResponseRedirect, get_object_or_404, redirect, 
 from django.urls import reverse
 from django.views.generic import DetailView, ListView, View
 from taggit.models import Tag
+
+from Dimensionalillusions.apps.EHub.forms import EmailSubscriptionForm
 
 from .forms import ArticleCommentForm, ArticleSearchForm
 from .models import Article, Category, Visitior
@@ -50,6 +51,7 @@ class ArticleView(View):
     def get(self, request):
         import binascii
         import os
+
         print(binascii.hexlify(os.urandom(25)))
         all_articles = Article.modelmanager.all().order_by(
             "published_date"
@@ -57,20 +59,20 @@ class ArticleView(View):
         paginator = Paginator(
             all_articles, 8
         )  # creating an instance of Paginator taking all posts and create 6 items per page
-        print('paginator:', paginator)
+        print("paginator:", paginator)
 
         page_var = "page"  # appears as ->/articles/?articles=2
         page = request.GET.get(page_var)  # get the string
-        print('page:',page)
+        print("page:", page)
         try:
             paginate_queryset = paginator.page(page)
-            print('tyyblock:', paginate_queryset)
+            print("tyyblock:", paginate_queryset)
         except PageNotAnInteger:
             paginate_queryset = paginator.page(1)
-            print('notantInteger:', paginate_queryset)
+            print("notantInteger:", paginate_queryset)
         except EmptyPage:
             paginate_queryset = paginator.page(paginator.num_pages)
-            print('empty:', paginate_queryset)
+            print("empty:", paginate_queryset)
 
         context = {
             "page_var": page_var,
@@ -100,7 +102,7 @@ class ArticleDetailView(DetailView):
         print(ip)
         # check if visitor is added to the article
         visitor_obj = Visitior.objects.filter(article__id=pk)
-        print('ds:',visitor_obj)
+        print("ds:", visitor_obj)
         if visitor_obj.exists():
             print("The article has already this visitor")
         else:
