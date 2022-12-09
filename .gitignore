@@ -1,5 +1,6 @@
 .env
 __pycache__/
+ZDIVirtual
 db.sqlite3
 activate.txt
 latest.dump

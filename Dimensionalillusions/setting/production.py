@@ -11,7 +11,7 @@ DEBUG = False
 SECRET_KEY = env.str("SECRET_KEY")
 SITE_ID = 2
 
-ALLOWED_HOSTS = ["dimensional-illusions.herokuapp.com", "dimensionalillusions.com", "www.dimensionalillusions.com"]
+ALLOWED_HOSTS = [".up.railway.app", "dimensionalillusions.com", "www.dimensionalillusions.com"]
 MIDDLEWARE = [
     "django.middleware.cache.UpdateCacheMiddleware",  # Explict middleware
     "django.middleware.security.SecurityMiddleware",
@@ -40,15 +40,14 @@ DATABASES = {
 }
 
 
-
 # Content Security Policy
 CSP_DEFAULT_SRC = ("none",)
 CSP_BASE_URI = ("'none'",)
 
-'''
+"""
  specifies valid parents that may embed a page using <frame>, 
  <iframe>, <object>, <embed>, or <applet>.
-'''
+"""
 CSP_FRAME_ANCESTORS = ("'none'",)
 
 
@@ -81,31 +80,28 @@ CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
 CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
 
 
-
-'''
+"""
 frame-src
 The HTTP Content-Security-Policy (CSP) frame-src directive specifies valid sources for nested
  browsing contexts loading using elements such as <frame> and <iframe>.
-'''
+"""
 CSP_FRAME_SRC = (
     "'self'",
     "https://www.facebook.com",
 )
 
-'''
+"""
 guards the several browsers mechanisms that can fetch HTTP Requests.
-'''
+"""
 
 CSP_CONNECT_SRC = (
     "'self'",
-
     "https://www.facebook.com",
     "https://fonts.googleapis.com",
     "http://*.cke-cs.com",
     "https://docx-converter.cke-cs.com",
     "https://pdf-converter.cke-cs.com",
 )
-
 
 
 # CACHE FRAMEWORK
@@ -160,3 +156,8 @@ EMAIL_PORT = 587
 
 EMAIL_HOST_USER = env.str("Email_Host_User")
 EMAIL_HOST_PASSWORD = env.str("Email_Host_Password")
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://dimensionalillusions.up.railway.app",
+]

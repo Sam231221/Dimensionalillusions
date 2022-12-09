@@ -38,6 +38,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+
+
 """
 DATABASES = {
     "default": {
@@ -45,9 +47,20 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 """
 
+
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
+
+
+"""
 DATABASES = {
     "default": {
         "ENGINE": env.str("DATABASE_ENGINE"),
@@ -60,21 +73,6 @@ DATABASES = {
 }
 
 """
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str("DATABASE_NAME"),  
-        'USER': env.str("DATABASE_USER"),    
-        'PASSWORD': env.str("DATABASE_PASSWORD"),  
-        'HOST': env.str("DATABASE_HOST"),
-        'PORT': env.str("DATABASE_PORT"),
-    }
-}
-
-"""
-
-
 
 # Content Security Policy
 CSP_DEFAULT_SRC = ("none",)
@@ -116,7 +114,6 @@ CSP_IMG_SRC = ("'self'", "* data:", "cdn.jsdelivr.net", "res.cloudinary.com")
 CSP_FONT_SRC = ("'self'", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com")
 
 
-
 '''
 frame-src
 The HTTP Content-Security-Policy (CSP) frame-src directive specifies valid sources for nested
@@ -140,8 +137,6 @@ CSP_CONNECT_SRC = (
     "https://docx-converter.cke-cs.com",
     "https://pdf-converter.cke-cs.com",
 )
-
-
 
 
 db_from_env = dj_database_url.config(conn_max_age=600)
