@@ -1,0 +1,66 @@
+[
+{
+    "model": "taggit.tag",
+    "pk": 1,
+    "fields": {
+        "name": "webdevelopment",
+        "slug": "webdevelopment"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 2,
+    "fields": {
+        "name": "django",
+        "slug": "django"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 3,
+    "fields": {
+        "name": "python",
+        "slug": "python"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 4,
+    "fields": {
+        "name": "photoediting",
+        "slug": "photoediting"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 7,
+    "fields": {
+        "name": "technology",
+        "slug": "technology"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 9,
+    "fields": {
+        "name": "cloud",
+        "slug": "cloud"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 10,
+    "fields": {
+        "name": "computing",
+        "slug": "computing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 14,
+    "fields": {
+        "name": "Networking",
+        "slug": "networking"
+    }
+}
+]

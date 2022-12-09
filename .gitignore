@@ -1,0 +1,11 @@
+.env
+__pycache__/
+ZVirtual
+activate.txt
+latest.dump
+my_project_visualized.png
+
+#Note make sure to include needy files and folder  to ignore and then only create git repository by git init.
+#If you already had git repository before you made a  .gitignore file it won't work.
+#If you run git status now you’ll see that .env is no longer tracked. That’s the behavior We want.
+#//Any file that starts with a dot, such as .env, is treated as a hidden file,

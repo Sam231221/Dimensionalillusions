@@ -1,0 +1,137 @@
+{% extends 'Authentication/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Dimensional illusions | Sign Up </title>
+{% endblock %}
+
+
+{% block style %}
+<style>
+    body {
+        background-color: aliceblue;
+    }
+
+    .errorbox {
+        color: red;
+        font-size: 1rem;
+        margin: 2rem;
+        text-align: center;
+        background-color: aliceblue;
+    }
+
+    .card-box {
+        background-color: white;
+    }
+
+    .form-container .errorlist .messages {
+        list-style-type: none;
+        color: red !important;
+        padding-right: 2rem;
+    }
+
+    .form-container .successbox {
+        color: rgb(255, 255, 255);
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    @media only screen and (max-width:551px) {
+        .errorbox {
+            color: red;
+            font-size: .8rem;
+            text-align: center;
+            background-color: aliceblue;
+        }
+
+        .form-field {
+            width: 16rem;
+        }
+
+        .form-container .form-field input {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container ">
+    <div class="row mt-5 mb-2">
+
+        <div class="col-md-12">
+
+            <div class="row g-0 card-box mb-4 p-1">
+
+                <div class="form-container col-12 col-md-6 ">
+
+                    <form action="" method="post" autocomplete="on">
+                        {% csrf_token %}
+                        <h1 class="text-center">Sign Up</h1>
+
+                        <div class="form-field d-flex ">
+                            <i class="bi bi-person-fill"></i>
+                            <input type="text" name="username" placeholder="Enter your Username" id="username" autofocus
+                                required>
+                        </div>
+
+                        <div class="form-field d-flex ">
+                            <i class="bi bi-person-fill"></i>
+                            <input type="email" name="email" placeholder="Enter your Email" id="email" required>
+                        </div>
+
+                        <div class="form-field d-flex">
+                            <i class="bi bi-lock-fill"></i>
+                            <input type="password" id="password1" placeholder="Enter a Password," name="password1"
+                                required>
+                        </div>
+
+                        <div class="form-field d-flex">
+                            <i class="bi bi-lock-fill"></i>
+                            <input type="password" id="password2" placeholder="Re-Enter the Password" name="password2"
+                                required>
+                        </div>
+
+                        <input type="submit" class="primarybtn" value="Sign In">
+                        <br><br>
+                        Already have a account? <a href="{% url 'Ehub:sign-in' %}">Sign In</a>
+                        <br>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == "error" %}
+                        <div class="errorbox">
+                            <p1 id="messages">{{message}}!</p1>
+                        </div>
+                        <br>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% endif %}
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == "success" %}
+                        <div class="successbox">
+                            <p1 id="messages">{{message}}!</p1>
+                        </div>
+                        <br>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </form>
+                </div>
+
+                <div class="box-container col-12 col-md-5">
+                    <img src="{% static 'assets/img/codingbg.jpg' %}" alt="codingbg">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
