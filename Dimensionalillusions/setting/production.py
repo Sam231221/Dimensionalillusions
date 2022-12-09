@@ -11,7 +11,7 @@ DEBUG = False
 SECRET_KEY = "efsdfs"
 SITE_ID = 2
 
-ALLOWED_HOSTS = ["dimensional-illusions.herokuapp.com", "dimensionalillusions.com", "www.dimensionalillusions.com"]
+ALLOWED_HOSTS = ["dimensionalillusions.up.railway.app", "dimensionalillusions.com", "www.dimensionalillusions.com"]
 MIDDLEWARE = [
     "django.middleware.cache.UpdateCacheMiddleware",  # Explict middleware
     "django.middleware.security.SecurityMiddleware",
@@ -151,3 +151,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "dimensionalillusions2002@gmail.com"
 EMAIL_HOST_PASSWORD = "123gmailcom"
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://dimensionalillusions.up.railway.app",
+]
