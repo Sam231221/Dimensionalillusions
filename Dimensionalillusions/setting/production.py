@@ -120,7 +120,7 @@ CSRF_COOKIE_SECURE = True  # to avoid transmitting the CSRF cookie over HTTP acc
 SESSION_COOKIE_SECURE = True  # to avoid transmitting the session cookie over HTTP accidentally.
 
 # REDIRECT HTTP TO HTTPS
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 
 import dj_database_url
