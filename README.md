@@ -1,7 +1,7 @@
 # Dimensional Illusions
 
 🛠 Type:
-Blogging Website, It Company, Education Website
+Blogging Website, It Company, Education Website.
 
 ## Features
 
